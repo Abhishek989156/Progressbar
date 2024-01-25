@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+
 import './App.css';
 
+import Progressbar from './component/Progressbar';
+
+
 function App() {
+  
+  const[value,setValue]=useState(0)
+  const[loading ,setLoading]=useState(false)
+
+
+  
+  useEffect(()=>{
+    const timer=setInterval(() => {
+      
+      if(value<100 && loading)
+       setValue(value+1)
+      
+    }, 100);
+
+    return(()=>clearInterval(timer))
+
+  },[value,loading])
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='box'>
+        <span>Progress bar</span>
+        <Progressbar value={value}></Progressbar>
+        <div className='btn'>
+        <button onClick={()=>setLoading(true)}>Start</button>
+        <button onClick={()=>setValue(0)}>Reset</button>
+        </div>
+       
+      </div>
     </div>
   );
 }

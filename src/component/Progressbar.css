@@ -1,0 +1,23 @@
+
+.bar{
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 10px;
+    height: 20px;
+   background-color: rgba(247, 241, 241, 0.571);
+   overflow: hidden;
+}
+.bar span{
+  
+  position: absolute;
+  left: 49%;
+   
+
+}
+.green{
+height: 100%;
+width: 20%;
+background-color: rgb(118, 219, 118);
+}
+
+
